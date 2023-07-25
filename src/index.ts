@@ -64,10 +64,19 @@ app.post('/file', async (req, res) => {
                             })
                                 .then(response => {
                                     fs.writeFileSync(`${__dirname}/../uploads/${claveFile}.jpg`, response.data, { encoding: "base64" });
+
+                                    let artists = '';
+                                    for (let index = 0; index < track.artists.length; index++) {
+                                        const element = track.artists[index];
+                                        artists += element.name;
+                                        if ((index + 1) < track.artists.length) {
+                                            artists += ', ';
+                                        }
+                                    }
         
                                     let tags = {
                                         title: track.name,
-                                        artist: track.artists[0].name,
+                                        artist: artists,
                                         album: track.album.name,
                                         APIC: `${__dirname}/../uploads/${claveFile}.jpg`,
                                     }
