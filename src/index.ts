@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use(cors({
-    origin: "https://music-tag.netlify.app/"
+    origin: "https://music-tag.netlify.app"
 }));
 
 app.get('/test', (_, res) => {
